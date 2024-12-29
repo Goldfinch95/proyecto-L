@@ -1,20 +1,19 @@
-import { NgClass } from '@angular/common';
+
 import { Component } from '@angular/core';
+import { ModalConfirmationComponent } from '../modal-confirmation/modal-confirmation.component';
+
 
 @Component({
   selector: 'app-modal-ingresar',
-  imports: [NgClass],
+  imports: [ModalConfirmationComponent],
   templateUrl: './modal-ingresar.component.html',
   styleUrl: './modal-ingresar.component.scss'
 })
 export class ModalIngresarComponent {
-  showModal: boolean = false;
+  selectedValue = '';
 
-  openModal() {
-    this.showModal = true;
-  }
-
-  closeModal() {
-    this.showModal = false;
+  onSelect(action: string){
+    this.selectedValue = action;
+    console.log(this.selectedValue)
   }
 }
