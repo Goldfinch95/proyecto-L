@@ -1,0 +1,30 @@
+.custom-table {
+  background-color: #f9f9f9;
+
+  .custom-tr {
+    background-color: #f2efea;
+  }
+
+  td,
+  th {
+    background-color: inherit ;
+    font-family: "Poppins", serif;
+    font-weight: 600;
+    font-size: 14px;
+    border-top: 1px solid rgba(216, 221, 226, 0.8667); 
+    border-bottom: 1px solid rgba(216, 221, 226, 0.8667); 
+    border-left: none;
+    border-right: none;
+  }
+
+  .custom-td{
+    color: #636D84;
+    font-family: "Poppins", serif;
+    font-weight: 600;
+    font-size: 14px;
+     padding-left: 25px;
+  padding-right: 25px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  }
+}
