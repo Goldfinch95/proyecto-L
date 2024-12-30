@@ -9,4 +9,20 @@ import { ModalConfirmationComponent } from '../modal-confirmation/modal-confirma
 })
 export class ModalCrearComponent {
 
-}
+  inputElement: string = '';
+
+  sendValue(input: HTMLInputElement): void {
+    this.inputElement = input.value;
+    if(this.inputElement === ''){
+      console.log('agrega un valor')
+      return
+    } 
+    console.log(`El valor del input es: ${this.inputElement}`);
+    setTimeout(() => {
+      input.value = '';   
+    }, 500);  
+    }
+    
+  }
+  
+

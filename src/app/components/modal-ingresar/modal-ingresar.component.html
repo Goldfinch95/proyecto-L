@@ -8,19 +8,19 @@
           <div class="modal-body d-flex flex-column">
             <div class="dropdown">
               <button class="btn btn-light border-dark dropdown-toggle w-100 mb-3" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Dropdown
+                {{ selectedValue || 'Item' }}
               </button>
               <ul class="dropdown-menu w-100">
-                <li><button class="dropdown-item" type="button">Action</button></li>
-                <li><button class="dropdown-item" type="button">Another action</button></li>
-                <li><button class="dropdown-item" type="button">Something else here</button></li>
+                @for (item of itemList; track $index) {
+                  <li><button class="dropdown-item" type="button" (click)="onSelectItem(item)">{{item}}</button></li>
+                }
               </ul>
             </div>
-            <input type="text" name="" id="" placeholder="Gasto" class="ps-3 rounded-3 border-1 py-2" style="background-color: #fff;">
+            <input #gastoInput type="number" name="" placeholder="Gasto" class="ps-3 rounded-3 border-1 py-2" style="background-color: #fff;">
           </div>
           <div class="modal-footer d-flex flex-nowrap justify-content-between w-100 border-0">
             <button type="button" class="btn btn-light border-2 border-dark rounded-pill px-4 w-100" data-bs-dismiss="modal">Cancelar</button>
-            <button type="button" class="btn btn-primary border-dark  rounded-pill px-4 w-100" style="background-color: #292929;" data-bs-toggle="modal" data-bs-target="#modalConfirmation">OK</button>
+            <button type="button" class="btn btn-primary border-dark  rounded-pill px-4 w-100" style="background-color: #292929;" data-bs-toggle="modal" data-bs-target="#modalConfirmation" (click)="onSelectConfirmation(gastoInput)">OK</button>
           </div>
         </div>
       </div>
