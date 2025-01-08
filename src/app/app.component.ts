@@ -10,7 +10,7 @@ import { ModalCrearComponent } from './components/modal-crear/modal-crear.compon
 
 @Component({
   selector: 'app-root',
-  imports: [NavSideComponent, NavComponent, TableComponent, ModalIngresarComponent, ModalCrearComponent],
+  imports: [NavSideComponent, NavComponent, TableComponent, ModalIngresarComponent, ModalCrearComponent, RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

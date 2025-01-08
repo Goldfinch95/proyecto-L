@@ -1,0 +1,39 @@
+import { Component } from '@angular/core';
+import { TableComponent } from '../../components/table/table.component';
+import {FormsModule} from '@angular/forms'
+
+@Component({
+  selector: 'app-caja',
+  imports: [TableComponent, FormsModule ],
+  templateUrl: './caja.component.html',
+  styleUrl: './caja.component.scss'
+})
+export class CajaComponent {
+
+  searchTerm: string = ''; // Para manejar el término de búsqueda
+  tableData: any[] = []; // Datos recibidos del hijo
+  filteredData: any[] = []; // Datos filtrados para mostrar
+
+  // Recibir los datos emitidos por el hijo
+  receiveTableData(data: any[]) {
+    this.tableData = data;
+    this.filteredData = [...this.tableData]; // Inicializa los datos filtrados con todos los datos
+  }
+
+  // Lógica de filtrado según el término de búsqueda
+  onSearch() {
+    const filteredData = this.tableData.filter(item => 
+      item.item.toLowerCase().includes(this.searchTerm.toLowerCase()) || 
+      item.fecha.toLowerCase().includes(this.searchTerm.toLowerCase())
+    );
+
+    console.log('Datos filtrados:', filteredData); // Muestra los datos filtrados en la consola
+  }
+
+
+  // Método para limpiar el término de búsqueda y restablecer los datos
+  clearSearch() {
+    this.searchTerm = ''; // Limpia el campo de búsqueda
+    this.filteredData = [...this.tableData]; // Restablece los datos originales
+  }
+}

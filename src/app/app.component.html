@@ -14,17 +14,8 @@
       <app-nav />
       <div class="px-3">
         <!--page-->
-        <!--title and buttons-->
-        <div class=" d-flex justify-content-between align-items-end">
-          <h2 class="mb-3 mt-5">Tabla</h2>
-          <div class="d-flex gap-2">
-            <button type="button" class="btn btn btn-light border-2 border-dark rounded-pill mb-3 px-4" style="background-color: #F2EFEA;" data-bs-toggle="modal" data-bs-target="#exampleModal">Ingresar</button>
-            <button type="button" class="btn btn-dark border-2 border-dark rounded-pill mb-3 px-5" style="background-color: #292929;" data-bs-toggle="modal" data-bs-target="#modalCrear">Crear</button>
-          </div>
-        </div>
-        <!--table-->
-        <app-table />
       </div>
+      <router-outlet />
     </div>
   </div>
 </div>

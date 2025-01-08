@@ -1,5 +1,10 @@
 <nav class="navbar navbar-expand-lg mt-3">
     <div class="container-fluid">
-      <h1>Bienvenido, Pizme</h1>
+      @if (currentUrl === '/caja') {
+        <h1>Caja</h1>
+      }
+      @else {
+        <h1>Fondo Fijo</h1>
+      }
     </div>
   </nav>

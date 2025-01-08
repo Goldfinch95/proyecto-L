@@ -2,28 +2,40 @@
   <nav class="navbar navbar-expand-lg border-bottom border-black mb-3">
     <div class="container-fluid d-flex justify-content-center">
       <a class="navbar-brand m-0" href="#">
-        <img height="150" width="150" ngSrc="logo_preview.webp" alt="logo" class="img-fluid">
+        <img
+          height="150"
+          width="150"
+          ngSrc="logo_preview.webp"
+          alt="logo"
+          class="img-fluid"
+        />
       </a>
     </div>
   </nav>
   <ul class="nav flex-column">
-    <li class="nav-item">
-      <a class="nav-link active text-secondary" aria-current="page" href="#">filtros</a>
+    <li class="nav-item  text-black rounded-3 pb-3">
+      <a
+        class="nav-link active d-flex text-black rounded-3"
+        aria-current="page"
+        [routerLink]="'/caja'"
+      >
+        <div>
+          <i class="fas fa-money-check-dollar"></i>
+        </div>
+        <span>Caja</span>
+      </a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link text-secondary" href="#"></a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link text-secondary" href="#"></a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link text-secondary" href="#"></a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link text-secondary" href="#"></a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link text-secondary" href="#"></a>
+    <li class="nav-item  text-black rounded-3 pb-3">
+      <a
+        class="nav-link active d-flex text-black rounded-3"
+        aria-current="page"
+        [routerLink]="'/fondo_fijo'"
+      >
+        <div>
+          <i class="fas fa-landmark"></i>
+        </div>
+        <span>Fondo Fijo</span>
+      </a>
     </li>
   </ul>
 </div>
