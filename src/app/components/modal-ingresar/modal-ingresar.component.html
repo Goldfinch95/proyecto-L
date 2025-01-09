@@ -2,13 +2,13 @@
     <div class="modal-dialog  modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content modal-costum p-2 pt-0" style="background-color: #FAF9F5">
           <div class="modal-header border-0" >
-            <h5 class="modal-title align-self-end pt-3 mb-0">Ingresar</h5>
+            <h5 class="modal-title align-self-end pt-3 mb-0">Ingresar movimiento</h5>
             <button type="button" class="btn-close btn-custom align-self-start" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body d-flex flex-column">
             <div class="dropdown">
               <button class="btn btn-light border-dark dropdown-toggle w-100 mb-3" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                {{ selectedValue || 'Item' }}
+                {{ selectedValue || 'Cuenta' }}
               </button>
               <ul class="dropdown-menu w-100">
                 @for (item of itemList; track $index) {

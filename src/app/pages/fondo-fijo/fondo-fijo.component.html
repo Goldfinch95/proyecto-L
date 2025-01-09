@@ -1,6 +1,20 @@
 <!--title and buttons-->
 <div class="d-flex justify-content-between align-items-end">
-  <h2 class="mb-3 mt-5">Tabla</h2>
+  <div class="input-group mb-3 mt-5 w-25">
+    <button class="btn btn-outline-secondary btn-custom pe-0" type="button" (click)="clearSearch()">
+      <i class="fa-solid fa-magnifying-glass"></i>
+    </button>
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Buscar..."
+      [(ngModel)]="searchTerm"
+      (input)="onSearch()"
+      (keyup.enter)="sendFilteredDataToTable()"
+    />
+    
+  </div>
+  
   <div class="d-flex gap-2">
     <button
       type="button"
@@ -9,7 +23,7 @@
       data-bs-toggle="modal"
       data-bs-target="#exampleModal"
     >
-      Ingresar
+      Añadir
     </button>
     <button
       type="button"
@@ -18,9 +32,9 @@
       data-bs-toggle="modal"
       data-bs-target="#modalCrear"
     >
-      Crear
+      Crear Cuenta
     </button>
   </div>
 </div>
 <!--table-->
-<app-table />
+<app-table (dataEmitter)="receiveTableData($event)"/>
