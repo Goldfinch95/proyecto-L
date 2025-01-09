@@ -10,7 +10,7 @@
       placeholder="Buscar..."
       [(ngModel)]="searchTerm"
       (input)="onSearch()"
-      
+      (keyup.enter)="sendFilteredDataToTable()"
     />
     
   </div>

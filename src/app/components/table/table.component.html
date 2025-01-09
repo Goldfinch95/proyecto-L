@@ -1,18 +1,24 @@
 <table class="table custom-table mt-2">
-    <thead>
-      <tr class="custom-tr">
-        <th scope="col">Fecha</th>
-        <th scope="col">Cuenta</th>
-        <th scope="col">Gasto</th>
-      </tr>
-    </thead>
-    <tbody>
-      @for (item of tableItems; track $index) {
-        <tr>
-          <td class="custom-td px-3 py-4">{{item.fecha}}</td>
-          <td class="custom-td px-3 py-4">{{item.item}}</td>
-          <td class="custom-td px-3 py-4">{{item.gasto}}</td>
-        </tr>
-      }
-    </tbody>
-  </table>
+  <thead>
+    <tr class="custom-tr">
+      <th scope="col">Fecha</th>
+      <th scope="col">Cuenta</th>
+      <th scope="col">Gasto</th>
+    </tr>
+  </thead>
+  <tbody>
+    @if (data && data.length > 0) { @for(item of data; track $index){
+    <tr>
+      <td class="custom-td px-3 py-4">{{ item.fecha }}</td>
+      <td class="custom-td px-3 py-4">{{ item.item }}</td>
+      <td class="custom-td px-3 py-4">{{ item.gasto }}</td>
+    </tr>
+    } } @else { @for (item of tableItems; track $index) {
+    <tr>
+      <td class="custom-td px-3 py-4">{{ item.fecha }}</td>
+      <td class="custom-td px-3 py-4">{{ item.item }}</td>
+      <td class="custom-td px-3 py-4">{{ item.gasto }}</td>
+    </tr>
+    } }
+  </tbody>
+</table>

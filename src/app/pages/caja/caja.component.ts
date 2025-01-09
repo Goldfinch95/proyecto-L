@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild  } from '@angular/core';
 import { TableComponent } from '../../components/table/table.component';
 import {FormsModule} from '@angular/forms'
 
@@ -14,6 +14,9 @@ export class CajaComponent {
   tableData: any[] = []; // Datos recibidos del hijo
   filteredData: any[] = []; // Datos filtrados para mostrar
 
+  // Referencia al hijo
+  @ViewChild(TableComponent) tableComponent!: TableComponent;
+
   // Recibir los datos emitidos por el hijo
   receiveTableData(data: any[]) {
     this.tableData = data;
@@ -22,12 +25,12 @@ export class CajaComponent {
 
   // Lógica de filtrado según el término de búsqueda
   onSearch() {
-    const filteredData = this.tableData.filter(item => 
-      item.item.toLowerCase().includes(this.searchTerm.toLowerCase()) || 
+    this.filteredData = this.tableData.filter((item) =>
+      item.item.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
       item.fecha.toLowerCase().includes(this.searchTerm.toLowerCase())
     );
 
-    console.log('Datos filtrados:', filteredData); // Muestra los datos filtrados en la consola
+    console.log('Datos filtrados:', this.filteredData); // Muestra los datos filtrados en la consola
   }
 
 
@@ -36,4 +39,10 @@ export class CajaComponent {
     this.searchTerm = ''; // Limpia el campo de búsqueda
     this.filteredData = [...this.tableData]; // Restablece los datos originales
   }
+
+  sendFilteredDataToTable() {
+    if (this.tableComponent) {
+      this.tableComponent.updateTable(this.filteredData);
+    }
+}
 }
