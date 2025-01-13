@@ -1,10 +1,11 @@
 import { Component, ViewChild } from '@angular/core';
 import { TableComponent } from '../../components/table/table.component';
 import {FormsModule} from '@angular/forms'
+import { ContainerBoxesComponent } from '../../components/container-boxes/container-boxes.component';
 
 @Component({
   selector: 'app-fondo-fijo',
-  imports: [TableComponent,FormsModule],
+  imports: [ContainerBoxesComponent, TableComponent,FormsModule],
   templateUrl: './fondo-fijo.component.html',
   styleUrl: './fondo-fijo.component.scss'
 })
