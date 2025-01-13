@@ -68,9 +68,9 @@
         <td class="custom-td text-success d-flex justify-content-end px-3 py-4">${{ formatGasto(item.gasto) }}</td>
       }
       @else {
-        <td class="custom-td text-danger d-flex justify-content-end px-3 py-4">${{ formatGasto(item.gasto) }}</td>
-      }
+        <td class="custom-td text-danger d-flex justify-content-end px-3 py-4">${{ item.gasto }}</td>
+    }
     </tr>
-    } }
+    }}
   </tbody>
 </table>

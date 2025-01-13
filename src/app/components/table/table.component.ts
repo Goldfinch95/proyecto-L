@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Output, OnInit, Input } from '@angular/core';
-
+import { Component, OnInit } from '@angular/core';
+import { DataTableService } from '../../services/data-table.service';
+import { UpdateDataService } from '../../services/update-data.service';
 @Component({
   selector: 'app-table',
   imports: [],
@@ -7,9 +8,8 @@ import { Component, EventEmitter, Output, OnInit, Input } from '@angular/core';
   styleUrl: './table.component.scss',
 })
 export class TableComponent implements OnInit {
-  @Output() dataEmitter = new EventEmitter<any[]>();
-
-  @Input() data: any[] = [];
+  tableData: any[] = [];
+  data: any[] = [];
 
   tableItems = [
     { fecha: '05 oct 2022 14:30', item: 'Chino', gasto: 3000 },
@@ -41,47 +41,54 @@ export class TableComponent implements OnInit {
     { fecha: '05 feb 2026 14:30', item: 'Agua', gasto: 150000 }
   ];
 
-  ngOnInit() {
-    this.dataEmitter.emit(this.tableItems); // Emite los datos al componente padre
-  }
+  constructor(private DataTableService: DataTableService, private UpdateDataService: UpdateDataService) {}
 
-  // ordena las fechas
+  ngOnInit(): void {
+    // Envía los datos automáticamente al cargar el componente
+    this.DataTableService.enviarDatos(this.tableItems);
+    //recibir los datos actualizados al cargar el componente
+    this.UpdateDataService.datos$.subscribe((datos) => {
+      this.tableData = datos;
+      this.data = [...this.tableData];
+    });
+  }
+  /* ordena las fechas
   sortDate(ascending: boolean): void {
-    // Verificar si hay elementos en 'data' y usarla para ordenar, sino usar 'tableItems'
+     Verificar si hay elementos en 'data' y usarla para ordenar, sino usar 'tableItems'
     const listToSort = (this.data && this.data.length > 0) ? this.data : this.tableItems;
     
     listToSort.sort((a, b) => {
-      // Convertir las fechas de string a objetos Date
+       Convertir las fechas de string a objetos Date
       const dateA = this.convertToDate(a.fecha);
       const dateB = this.convertToDate(b.fecha);
     
-      // Si 'ascending' es verdadero, ordena de mayor a menor, de lo contrario, de menor a mayor
+       Si 'ascending' es verdadero, ordena de mayor a menor, de lo contrario, de menor a mayor
       return ascending ? dateB.getTime() - dateA.getTime() : dateA.getTime() - dateB.getTime();
-    });
+    });*/
   
-    // Emitir los datos ordenados
+    /*// Emitir los datos ordenados
     this.dataEmitter.emit(listToSort);
-  }
+  }*/
   
-  // Función para convertir la fecha de 'DD MMM YYYY HH:MM' a objeto Date
+  /* Función para convertir la fecha de 'DD MMM YYYY HH:MM' a objeto Date
   convertToDate(fecha: string): Date {
-    const [day, month, year, time] = fecha.split(' ');
+    const [day, month, year, time] = fecha.split(' ');*/
     
-    // Crear una cadena compatible con el formato 'YYYY-MM-DDTHH:MM:00'
+    /* Crear una cadena compatible con el formato 'YYYY-MM-DDTHH:MM:00'
     const monthMap: { [key: string]: string } = {
       jan: '01', feb: '02', mar: '03', apr: '04', may: '05', jun: '06',
       jul: '07', aug: '08', sep: '09', oct: '10', nov: '11', dec: '12'
-    };
+    };*/
   
-    const [hour, minute] = time.split(':');
+    /*const [hour, minute] = time.split(':');
     
     const formattedDate = `${year}-${monthMap[month.toLowerCase()]}-${day}T${hour}:${minute}:00`;
     
-    // Crear el objeto Date
+     Crear el objeto Date
     return new Date(formattedDate);
-  }
+  }*/
 
-  // ordena las items
+  /* ordena las items
   sortItem(ascending: boolean): void {
     // Verificar si estamos usando 'data' o 'tableItems'
     const listToSort = (this.data && this.data.length > 0) ? this.data : this.tableItems;
@@ -97,9 +104,9 @@ export class TableComponent implements OnInit {
         return itemA < itemB ? 1 : itemA > itemB ? -1 : 0;
       }
     });
-  }
+  }*/
 
-  // ordena las gastos
+  /* ordena las gastos
   sortNumbers(ascending: boolean): void {
     const listToSort = (this.data && this.data.length > 0) ? this.data : this.tableItems;
   
@@ -110,15 +117,17 @@ export class TableComponent implements OnInit {
         return b.gasto - a.gasto;  // Ordena de mayor a menor
       }
     });
-  }
+  }*/
 
+    //actualizar datos de la tabla
   updateTable(newData: any[]) {
     this.data = newData;
-    this.data.sort((a, b) => b.gasto - a.gasto); // Actualiza los datos de la tabla
-    console.log('Datos actualizados en el hijo:', this.data); // Muestra los datos en la consola
+    this.data.sort((a, b) => b.gasto - a.gasto); 
   }
 
+  //poner "," a los números
   formatGasto(gasto: number): string {
-    return gasto.toLocaleString('de-DE');  // Usa la función toLocaleString para formatear con comas
+    return gasto.toLocaleString('de-DE');
   }
+
 }
