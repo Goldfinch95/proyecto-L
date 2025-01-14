@@ -6,12 +6,13 @@ import { ModalIngresarComponent } from './components/modal-ingresar/modal-ingres
 import { ModalCrearComponent } from './components/modal-crear/modal-crear.component';
 import { ContainerBoxesComponent } from './components/container-boxes/container-boxes.component';
 import { TableNavComponent } from './components/table-nav/table-nav.component';
+import { ModalCalendarioComponent } from './components/modal-calendario/modal-calendario.component';
 
 
 
 @Component({
   selector: 'app-root',
-  imports: [NavSideComponent, NavComponent, ContainerBoxesComponent, ModalIngresarComponent, ModalCrearComponent, TableNavComponent, RouterOutlet],
+  imports: [NavSideComponent, NavComponent, ContainerBoxesComponent, ModalIngresarComponent, ModalCrearComponent, TableNavComponent, ModalCalendarioComponent, RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
