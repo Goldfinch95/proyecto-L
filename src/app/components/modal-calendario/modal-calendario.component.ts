@@ -136,4 +136,18 @@ export class ModalCalendarioComponent implements OnInit {
       console.log(this.selectedDays);
     }
   }
+  resetSelection() {
+    // Resetear la lista de días seleccionados
+    this.selectedDays = [];
+  
+    // Reiniciar el estado de selección en el calendario
+    this.calendarDays.forEach(week => {
+      week.forEach(day => {
+        day.selected = false;
+      });
+    });
+  
+    // También reiniciar lastSelectedDay si es necesario
+    this.lastSelectedDay = null;
+  }
 }
