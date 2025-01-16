@@ -35,3 +35,10 @@
   border: none;
   height: 15px;
 }
+
+.custom-btn{
+  cursor: pointer; /* Cambia el cursor para indicar que es clickeable */
+  &:hover {
+    background-color: #f8f9fa; /* Cambia el color al pasar el cursor */
+  }
+}

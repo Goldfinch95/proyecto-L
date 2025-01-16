@@ -1,0 +1,19 @@
+<div class="modal fade" id="modalInfo" tabindex="-1" aria-labelledby="modalInfo" aria-hidden="true">
+    <div class="modal-dialog  modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content modal-costum p-2 pt-0" style="background-color: #FAF9F5">
+          <div class="modal-header border-0" >
+            <h5 class="modal-title align-self-end pt-3 mb-0">Resumen</h5>
+            <button type="button" class="btn-close btn-custom align-self-start" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body d-flex flex-column pb-1 ">
+            <p class="text-muted"><strong class="text-black">Fecha:</strong> {{ selectedItem?.fecha }}</p>
+        <p class="text-muted"><strong class="text-black">Item:</strong> {{ selectedItem?.item }}</p>
+        <p class="text-muted"><strong class="text-black" st>Gasto:</strong> ${{ selectedItem?.gasto }}</p>
+          </div>
+          <div class="modal-footer border-0 pt-0 ">
+            <button type="button" class="btn btn-primary border-dark  rounded-pill" style="background-color: #292929;" data-bs-toggle="modal" data-bs-target="#modalConfirmation"><i class="fa-solid fa-trash"></i></button>
+          </div>
+        </div>
+      </div>
+  </div>
+ <app-modal-confirmation />

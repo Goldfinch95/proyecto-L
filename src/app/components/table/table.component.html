@@ -50,7 +50,9 @@
     @if (data && data.length > 0) { 
       
       @for(item of data; track $index){
-    <tr>
+    <tr class="custom-btn" (click)="onRowClick(item)"
+    data-bs-toggle="modal" 
+    data-bs-target="#modalInfo">
       <td class="custom-td px-3 py-4">{{ item.fecha }}</td>
       <td class="custom-td px-3 py-4">{{ item.item }}</td>
       @if (item.gasto > 1) {
@@ -61,7 +63,9 @@
       }
     </tr>
     } } @else { @for (item of tableItems; track $index) {
-    <tr>
+    <tr class="custom-btn" (click)="onRowClick(item)"
+    data-bs-toggle="modal" 
+    data-bs-target="#modalInfo">
       <td class="custom-td px-3 py-4">{{ item.fecha }}</td>
       <td class="custom-td px-3 py-4">{{ item.item }}</td>
       @if (item.gasto > 1) {

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DataTableService } from '../../services/data-table.service';
 import { UpdateDataService } from '../../services/update-data.service';
+import { FilaInfoService } from '../../services/fila-info.service';
+FilaInfoService
 @Component({
   selector: 'app-table',
   imports: [],
@@ -10,6 +12,7 @@ import { UpdateDataService } from '../../services/update-data.service';
 export class TableComponent implements OnInit {
   tableData: any[] = [];
   data: any[] = [];
+  selectedItem: any = null;
 
   tableItems = [
     { fecha: '05 oct 2022 14:30', item: 'Chino', gasto: 3000 },
@@ -41,7 +44,7 @@ export class TableComponent implements OnInit {
     { fecha: '05 feb 2026 14:30', item: 'Agua', gasto: 150000 }
   ];
 
-  constructor(private DataTableService: DataTableService, private UpdateDataService: UpdateDataService) {}
+  constructor(private DataTableService: DataTableService, private UpdateDataService: UpdateDataService, private FilaInfoService: FilaInfoService) {}
 
   ngOnInit(): void {
     // Envía los datos automáticamente al cargar el componente
@@ -52,6 +55,11 @@ export class TableComponent implements OnInit {
       this.data = [...this.tableData];
     });
   }
+
+  onRowClick(item: any): void {
+    this.FilaInfoService.setSelectedItem(item); // Actualiza el ítem seleccionado
+  }
+
   /* ordena las fechas
   sortDate(ascending: boolean): void {
      Verificar si hay elementos en 'data' y usarla para ordenar, sino usar 'tableItems'
